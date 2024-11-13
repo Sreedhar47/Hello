@@ -7,11 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ApiController {
-
 	
 	@GetMapping("/get")
-	public ResponseEntity<String> welocme(){
+	public ResponseEntity<String> welcome(){
 		return new ResponseEntity<>("WELCOME TO HELLO API", HttpStatus.OK);
 	}
-	
+
 }
