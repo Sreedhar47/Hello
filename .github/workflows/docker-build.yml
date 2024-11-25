@@ -33,19 +33,15 @@ jobs:
       - name: Build with Maven
         run: mvn clean install -DskipTests
 
-      # Step 5: Install JaCoCo plugin for code coverage
-      - name: Install JaCoCo plugin
-        run: mvn org.jacoco:jacoco-maven-plugin:prepare-agent
+      # Step 5: Run tests with JaCoCo
+      - name: Run tests with JaCoCo
+        run: mvn org.jacoco:jacoco-maven-plugin:0.8.10:prepare-agent test
 
-      # Step 6: Run tests with Maven
-      - name: Run tests with Maven
-        run: mvn test
-
-      # Step 7: Generate code coverage report using JaCoCo
+      # Step 6: Generate code coverage report using JaCoCo
       - name: Generate code coverage report
-        run: mvn jacoco:report
+        run: mvn org.jacoco:jacoco-maven-plugin:0.8.10:report
 
-      # Step 8: Log in to GitHub Container Registry
+      # Step 7: Log in to GitHub Container Registry
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v2
         with:
@@ -53,12 +49,12 @@ jobs:
           username: ${{ github.actor }}  # GitHub username
           password: ${{ secrets.GHCR_PAT }}  # GitHub Personal Access Token (PAT)
 
-      # Step 9: Build Docker image
+      # Step 8: Build Docker image
       - name: Build Docker image
         run: |
           docker build -t ghcr.io/${{ github.repository_owner }}/hello-api:latest .
 
-      # Step 10: Push Docker image to GitHub Container Registry
+      # Step 9: Push Docker image to GitHub Container Registry
       - name: Push Docker image to GHCR
         run: |
           docker push ghcr.io/${{ github.repository_owner }}/hello-api:latest
