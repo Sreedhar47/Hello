@@ -1,4 +1,4 @@
-package com.vsr.hello.api.controller;
+package com.vsr.Hello.api.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
