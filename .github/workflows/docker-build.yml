@@ -46,8 +46,8 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}  # GitHub username
-          password: ${{ secrets.GHCR_PAT }}  # GitHub Personal Access Token (PAT)
+          username: ${{ github.actor }}  # Automatically uses the GitHub username
+          password: ${{ secrets.GHCR_PAT }}  # Use the PAT secret
 
       # Step 8: Build Docker image
       - name: Build Docker image
