@@ -10,6 +10,7 @@ public class ApiController {
 	
 	@GetMapping("/get")
 	public ResponseEntity<String> welcome(){
+		
 		return new ResponseEntity<>("WELCOME TO HELLO API", HttpStatus.OK);
 	}
 
