@@ -34,7 +34,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # Step 5: Build and push the Docker image
+      # Step 5: Build and Push the Docker image
       - name: Build and Push Docker Image
         run: |
           docker build -t ghcr.io/${{ github.repository_owner }}/hello-api:latest .
