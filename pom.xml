@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.vsr</groupId>
-	<artifactId>Hello.api</artifactId>
+	<artifactId>hello-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>HelloAPI</name>
 	<description>Demo project for Spring Boot</description>
