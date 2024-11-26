@@ -92,16 +92,20 @@ jobs:
       - name: Generate code coverage report
         run: mvn org.jacoco:jacoco-maven-plugin:0.8.10:report
         
-      # Step 7: Printing  Code coverage in percentage
-      - name: Printing  Code coverage in percentage
+      # Step 7: Printing Code coverage in percentage
+      - name: Install xmllint
         run: |
-              mvn org.jacoco:jacoco-maven-plugin:0.8.10:report
-              coverage=$(xmllint --xpath "string(//report/counter[@type='INSTRUCTION']/@covered)" target/site/jacoco/jacoco.xml)
-              missed=$(xmllint --xpath "string(//report/counter[@type='INSTRUCTION']/@missed)" target/site/jacoco/jacoco.xml)
-              total=$(($coverage + $missed))
-              percentage=$(echo "scale=2; $coverage*100/$total" | bc)
-              echo "Code coverage: $percentage%"  
+          sudo apt-get update
+          sudo apt-get install -y libxml2-utils
+
+      - name: Printing Code coverage in percentage
+        run: |
+          coverage=$(xmllint --xpath "string(//report/counter[@type='INSTRUCTION']/@covered)" target/site/jacoco/jacoco.xml)
+          missed=$(xmllint --xpath "string(//report/counter[@type='INSTRUCTION']/@missed)" target/site/jacoco/jacoco.xml)
+          total=$(($coverage + $missed))
+          percentage=$(echo "scale=2; $coverage*100/$total" | bc)
+          echo "Code coverage: $percentage%"
        
-      # Step 7: Conclusion       
-      - name: Run tasks for other branches sucessfully
+      # Step 8: Conclusion       
+      - name: Run tasks for other branches successfully
         run: echo "Running workflow for non-main branch."
