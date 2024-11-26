@@ -5,6 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+//Swagger UI: http://localhost:8080/swagger-ui.html	
+//OpenAPI JSON: http://localhost:8080/v3/api-docs
+
 @RestController
 public class ApiController {
 	
