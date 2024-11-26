@@ -105,11 +105,7 @@ jobs:
           total=$(($coverage + $missed))
           percentage=$(echo "scale=2; $coverage*100/$total" | bc)
           echo "Code coverage: $percentage%"
-    
-      # Step 8: Coverage threshold 
-      - name: Enforce code coverage threshold
-        run: |
-          # Ensure percentage is calculated first
+          echo "Ensure percentage is calculated first"
           echo "Code coverage: $percentage%"
           if (( $(echo "$percentage < 80" | bc -l) )); then
             echo "Code coverage is below 80%. Failing the workflow."
